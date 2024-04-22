@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ExceptionsDemo {
     public static void main(String[] args) {
@@ -33,7 +32,14 @@ public class ExceptionsDemo {
 
         //readTextFile();
 
-        writeTextToFile();
+        //writeTextToFile();
+        BankAccount account1 = new se.lexicon.BankAccount(100);
+        BankAccount account2 = new se.lexicon.BankAccount(100);
+        try {
+            account1.deposit(-200);
+        }catch(IllegalArgumentException iae){
+            System.out.println(iae.getMessage());
+        }
 
 
     }
@@ -47,7 +53,7 @@ public class ExceptionsDemo {
                 number = scanner.nextDouble(); // is to read sequence of numbers, skipping the whitespace
                 break;
             } catch (InputMismatchException e) {
-                System.out.println("Number is not Valid.");
+                System.out.println(e.getMessage());
                 scanner.next(); // consume invalid input to avoid an infinitive loop
             }
         } // while loop
